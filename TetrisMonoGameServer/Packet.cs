@@ -11,7 +11,8 @@ namespace TCPChatServer {
         chat = 3,
         names = 4,
         connected = 5,
-        disconnected = 6
+        disconnected = 6,
+        block = 7
     }
 
 
@@ -22,7 +23,8 @@ namespace TCPChatServer {
         chatReceived = 3,
         namesReceived = 4,
         connectedReceived = 5,
-        disconnectedReceived = 6
+        disconnectedReceived = 6,
+        blockInfoReceived = 7
     }
 
 
@@ -157,6 +159,12 @@ namespace TCPChatServer {
             buffer.AddRange(Encoding.Unicode.GetBytes(_stringValue)); // Add to the packet/datastream the string itself
         }
 
+
+        public void PacketWrite(bool _boolValue) {
+
+            buffer.AddRange(BitConverter.GetBytes(_boolValue));
+        }
+
         #endregion
 
         #region Packet Data Reading Functions
@@ -176,6 +184,23 @@ namespace TCPChatServer {
             } else {
                 Funcs.printMessage(0, "Value of type 'byte' could not be read!", false);
                 return nullByte;
+            }
+        }
+
+
+        public bool PacketReadBool(bool moveDataPointer) {
+
+            if (buffer.Count > readPointer) {
+
+                bool boolRead = BitConverter.ToBoolean(byteArray, readPointer);
+                if (moveDataPointer)
+                    readPointer++;
+
+                return boolRead;
+
+            } else {
+                Funcs.printMessage(0, "Value of type 'bool' could not be read!", false);
+                return false;
             }
         }
 

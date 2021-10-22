@@ -90,7 +90,8 @@ namespace TCPChatServer {
 
                 { (int)ClientPackets.welcomeReceived, TCPServerHandle.ReturnedWelcomeReceived },
                 { (int)ClientPackets.messageReceived, TCPServerHandle.ReturnedWelcomeReceived },
-                { (int)ClientPackets.chatReceived, TCPServerHandle.PassChatMessage }
+                { (int)ClientPackets.chatReceived, TCPServerHandle.PassChatMessage },
+                { (int)ClientPackets.blockInfoReceived, TCPServerHandle.PassBlockInfo }
             };
 
 

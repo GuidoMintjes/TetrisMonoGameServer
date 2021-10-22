@@ -45,5 +45,12 @@ namespace TCPChatServer {
 
             TCPServerSend.TCPSendPacketToAll(packet);
         }
+
+
+        public static void PassBlockInfo(int clientID, Packet packet) {
+
+            Funcs.printMessage(2, "BLock info received and trying to send!", false);
+            TCPServerSend.TCPSendPacketToAll(clientID, packet);
+        }
     }
 }
