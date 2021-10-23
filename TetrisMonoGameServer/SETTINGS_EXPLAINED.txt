@@ -1,0 +1,8 @@
+﻿Settings for the server can be changed in SERVER_INFO.txt
+
+
+Each setting is split up by a semicolon (;)
+
+This is the list of settings with their array index:
+
+0 - Server port
