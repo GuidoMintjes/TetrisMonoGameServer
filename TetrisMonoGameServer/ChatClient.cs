@@ -146,19 +146,14 @@ namespace TCPChatServer {
 
                     byte[] packetBytes = receivedPacket.PacketReadBytes(packetLength, true);
 
-                    ThreadManager.ExecuteOnMainThread(() => {
+                    using (Packet packet = new Packet(packetBytes)) {
 
-                        using (Packet packet = new Packet(packetBytes)) {
-
-                            int packetID = packet.PacketReadInt(true);
-
-                            
-                            ChatServer.packetHandlers[packetID](id, packet);
+                        int packetID = packet.PacketReadInt(true);
 
 
-                            //Funcs.printMessage(2, "Added to packet handlers", true);
-                        }
-                    });
+                        ChatServer.packetHandlers[packetID](id, packet);
+                    }
+                        
 
                     packetLength = 0;
 
