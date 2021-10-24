@@ -49,7 +49,7 @@ namespace TetrisMonoGameServer {
 
         public static void PassBlockInfo(int clientID, Packet packet) {
 
-            Funcs.printMessage(2, "BLock info received and trying to send!");
+            Funcs.printMessage(2, "Block info received and trying to send!");
             TCPServerSend.TCPSendPacketToAll(clientID, packet);
         }
     }
