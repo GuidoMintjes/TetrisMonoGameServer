@@ -11,7 +11,8 @@ namespace TCPChatServer {
         chat = 3,
         names = 4,
         connected = 5,
-        disconnected = 6
+        disconnected = 6,
+        block = 7
     }
 
 
@@ -22,7 +23,8 @@ namespace TCPChatServer {
         chatReceived = 3,
         namesReceived = 4,
         connectedReceived = 5,
-        disconnectedReceived = 6
+        disconnectedReceived = 6,
+        blockInfoPass = 7
     }
 
 
@@ -130,6 +132,15 @@ namespace TCPChatServer {
             buffer.AddRange(_dataSet);
         }
 
+        /// <summary>
+        /// Write a boolean to the stream
+        /// </summary>
+        /// <param name="_boolValue">The boolean value to write</param>
+        public void PacketWrite(bool boolValue) {
+
+            buffer.AddRange(BitConverter.GetBytes(boolValue));
+        }
+
 
         /// <summary>
         /// Add an integer to the packet/bytestream, mainly used for adding the packet id that is used in sending
@@ -176,6 +187,27 @@ namespace TCPChatServer {
             } else {
                 Funcs.printMessage(0, "Value of type 'byte' could not be read!", false);
                 return nullByte;
+            }
+        }
+
+
+        /// <summary>
+        /// Reads a boolean from the stream
+        /// </summary>
+        /// <param name="moveDataPointer">Whether to move along reading in the byte array or not</param>
+        public bool PacketReadBool(bool moveDataPointer) {
+
+            if (buffer.Count > readPointer) {
+
+                bool boolRead = BitConverter.ToBoolean(byteArray, readPointer);
+                if (moveDataPointer)
+                    readPointer++;
+
+                return boolRead;
+
+            } else {
+                Funcs.printMessage(0, "Value of type 'bool' could not be read!", false);
+                return false;
             }
         }
 
