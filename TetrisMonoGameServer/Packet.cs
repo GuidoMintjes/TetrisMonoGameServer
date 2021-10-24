@@ -148,7 +148,7 @@ namespace TetrisMonoGameServer {
         /// <param name="_intValue"> The actual integer value that is added to the packet (4 bytes) </param>
         public void PacketWrite(int _intValue) {
 
-            ChatApp.countIntSend++;
+            //TetrisMonoGameServer.countIntSend++;
 
             //Console.WriteLine(_intValue.ToString() + " sent as no. " + ChatApp.countIntSend + 
                 //" from: " + (new System.Diagnostics.StackTrace()).GetFrame(1).GetMethod());
@@ -185,7 +185,7 @@ namespace TetrisMonoGameServer {
                 return byteRead;
 
             } else {
-                Funcs.printMessage(0, "Value of type 'byte' could not be read!", false);
+                Funcs.printMessage(0, "Value of type 'byte' could not be read!");
                 return nullByte;
             }
         }
@@ -206,7 +206,7 @@ namespace TetrisMonoGameServer {
                 return boolRead;
 
             } else {
-                Funcs.printMessage(0, "Value of type 'bool' could not be read!", false);
+                Funcs.printMessage(0, "Value of type 'bool' could not be read!");
                 return false;
             }
         }
@@ -224,7 +224,7 @@ namespace TetrisMonoGameServer {
                 return bytesRead;
 
             } else {
-                Funcs.printMessage(0, "Value of type 'byte[]' could not be read!", false);
+                Funcs.printMessage(0, "Value of type 'byte[]' could not be read!");
                 return null;
             }
         }
@@ -245,7 +245,7 @@ namespace TetrisMonoGameServer {
                 return intRead;
 
             } else {
-                Funcs.printMessage(0, "Value of type 'int' could not be read!", false);
+                Funcs.printMessage(0, "Value of type 'int' could not be read!");
                 return 0;
             }
         }
@@ -265,7 +265,7 @@ namespace TetrisMonoGameServer {
                 return stringRead;
 
             } else {
-                Funcs.printMessage(0, "Value of type 'string' could not be read!", false);
+                Funcs.printMessage(0, "Value of type 'string' could not be read!");
                 return null;
             }
         }

@@ -44,7 +44,7 @@ namespace TetrisMonoGameServer {
 
             Funcs.printMessage(2, "Server initialized on port: " + Port);
 
-            ServerCommand.CommandLoop();
+            //ServerCommand.CommandLoop();
         }
 
 
@@ -72,7 +72,7 @@ namespace TetrisMonoGameServer {
 
 
             Funcs.printMessage(2, client.Client.RemoteEndPoint + " has failed to connect to server because the server is full. " +
-                                " (SERVER FULL ERROR)", true);
+                                " (SERVER FULL ERROR)");
         }
 
 

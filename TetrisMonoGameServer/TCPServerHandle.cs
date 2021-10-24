@@ -12,7 +12,7 @@ namespace TetrisMonoGameServer {
             string receivedUserName = packet.PacketReadString(true);
 
             Funcs.printMessage(3, $"{ChatServer.connections[clientID].tcp.socket.Client.RemoteEndPoint} connected to this server!"
-                + $" (ID {clientID} with name {receivedUserName})", true);
+                + $" (ID {clientID} with name {receivedUserName})");
 
 
             ChatServer.connections[clientID].userName = receivedUserName;   // Saves the username for this client
@@ -30,7 +30,7 @@ namespace TetrisMonoGameServer {
             if(clientID != receivedClientID) {
 
                 Console.WriteLine();
-                Funcs.printMessage(0, $"Client {receivedUserName} with ID {clientID} has the wrong ID: {receivedClientID}!", false);
+                Funcs.printMessage(0, $"Client {receivedUserName} with ID {clientID} has the wrong ID: {receivedClientID}!");
                 Console.WriteLine();
 
                 ChatServer.connections[clientID].Disconnect();
@@ -41,7 +41,7 @@ namespace TetrisMonoGameServer {
         public static void PassChatMessage(int clientID, Packet packet) {
 
             string message = packet.PacketReadString(true);
-            Funcs.printMessage(4, message, false);
+            Funcs.printMessage(4, message);
 
             TCPServerSend.TCPSendPacketToAll(packet);
         }
@@ -49,7 +49,7 @@ namespace TetrisMonoGameServer {
 
         public static void PassBlockInfo(int clientID, Packet packet) {
 
-            Funcs.printMessage(2, "BLock info received and trying to send!", false);
+            Funcs.printMessage(2, "BLock info received and trying to send!");
             TCPServerSend.TCPSendPacketToAll(clientID, packet);
         }
     }
