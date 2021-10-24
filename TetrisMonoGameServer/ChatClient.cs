@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace TCPChatServer {
+namespace TetrisMonoGameServer {
 
     public class ChatClient {
 
@@ -78,7 +78,7 @@ namespace TCPChatServer {
 
                 } catch (Exception exc) {
 
-                    Funcs.printMessage(0, $"Unable to send data to client {id} through TCP, err msg: {exc}", false);
+                    Funcs.printMessage(0, $"Unable to send data to client {id} through TCP, err msg: {exc}");
                 }
             }
 

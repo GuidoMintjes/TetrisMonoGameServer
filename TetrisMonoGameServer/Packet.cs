@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TCPChatServer {
+namespace TetrisMonoGameServer {
 
     // Packet sent from server to client, in this case only a welcome message
     public enum ServerPackets {

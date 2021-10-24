@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Collections.Generic;
 
-namespace TCPChatServer {
+namespace TetrisMonoGameServer {
 
     class ChatServer {
 
@@ -30,7 +30,7 @@ namespace TCPChatServer {
         // Initialize the server
         public static void StartServer(int maxConnections, int port) {
 
-            Funcs.printMessage(2, "Starting server...", true);
+            Funcs.printMessage(2, "Starting server...");
             InitializeServerData(maxConnections);
 
             MaxConnections = maxConnections;
@@ -42,7 +42,7 @@ namespace TCPChatServer {
             tcpListener.Start();
             tcpListener.BeginAcceptTcpClient(new AsyncCallback(ServerConnectCallback), null);
 
-            Funcs.printMessage(2, "Server initialized on port: " + Port, true);
+            Funcs.printMessage(2, "Server initialized on port: " + Port);
 
             ServerCommand.CommandLoop();
         }
@@ -57,7 +57,7 @@ namespace TCPChatServer {
                                                                                                 // again, otherwise the tcplistener would stop
                                                                                                 // listening and no other connections could be made
 
-            Funcs.printMessage(2, "Someone is trying to connect from: " + client.Client.RemoteEndPoint, true);
+            Funcs.printMessage(2, "Someone is trying to connect from: " + client.Client.RemoteEndPoint);
 
             
             for (int i = 1; i <= MaxConnections; i++) {
@@ -95,7 +95,7 @@ namespace TCPChatServer {
             };
 
 
-            Funcs.printMessage(2, "Packet handler dictionary initiated!", true);
+            Funcs.printMessage(2, "Packet handler dictionary initiated!");
         }
     }
 }
